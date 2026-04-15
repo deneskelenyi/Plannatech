@@ -254,16 +254,6 @@ def runClient_new():
             dt_sting = now.strftime("%d/%m/%Y %H:%M:%S")
             print(Fore.BLUE,dt_sting,"XXXXXXXXXXXXXXXXXXXXXX Connecting...")
             #random.shuffle(all_endpoints)
-            '''connection = pika.BlockingConnection(pika.ConnectionParameters(
-                    # host="inplay-rmq.lsports.eu",
-                    host="prematch-rmq.lsports.eu",
-                    port=5672,
-                    virtual_host="Customers",
-                    credentials=pika.PlainCredentials(
-                        username="devops@datadrivesports.com", password="ke4@he7Res", erase_on_connect=False),
-                    # ssl_options=pika.SSLOptions(context),
-                    heartbeat=20
-                ))'''
             connection = pika.BlockingConnection(app_config.remote_rabbitmq_params(heartbeat=20))
             print(Fore.LIGHTGREEN_EX,dt_sting,"Connected")
             channel = connection.channel()
